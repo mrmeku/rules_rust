@@ -625,7 +625,7 @@ cargo_build_script = rule(
             doc = "The binary script to run, generally a `rust_binary` target.",
             executable = True,
             mandatory = True,
-            cfg = "target",
+            cfg = "exec",
             providers = [CargoBuildScriptRunfilesInfo],
         ),
         "tools": attr.label_list(

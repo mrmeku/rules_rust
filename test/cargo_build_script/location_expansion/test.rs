@@ -63,22 +63,17 @@ pub fn test_execpath() {
         )
         .1;
 
-    let (data_cfg, data_short_path) = data_path.split_at(
+    let (_data_cfg, data_short_path) = data_path.split_at(
         data_path
             .find("/bin/")
             .unwrap_or_else(|| panic!("Failed to find bin in {}", data_path))
             + "/bin/".len(),
     );
-    let (tool_cfg, tool_short_path) = tool_path.split_at(
+    let (_tool_cfg, tool_short_path) = tool_path.split_at(
         tool_path
             .find("/bin/")
             .unwrap_or_else(|| panic!("Failed to find bin in {}", tool_path))
             + "/bin/".len(),
-    );
-
-    assert_ne!(
-        data_cfg, tool_cfg,
-        "Data and tools should not be from the same configuration."
     );
 
     assert_eq!(
